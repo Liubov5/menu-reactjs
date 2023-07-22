@@ -1,5 +1,11 @@
-import { legacy_createStore } from "redux";
-import { menuReducer } from "./MenuReducer";
+import { combineReducers, legacy_createStore } from "redux";
+
+import { CartReducer } from "./CartReducer";
+import { MenuReducer } from "./MenuReducer";
 
 
-export const store = legacy_createStore(menuReducer);
+let reducers = combineReducers({
+    MenuReducer,
+    CartReducer,
+});
+export const store = legacy_createStore(reducers);

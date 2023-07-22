@@ -1,11 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { store } from './store';
+import { MenuWrapper } from './Components/Menu/MenuWrapper';
 
 function App() {
+ 
   return (
-    <div className="menu_wrapper">
-      <h1>LOL</h1>
-    </div>
+    <Provider store={store}>
+      <MenuWrapper/>
+     
+    </Provider>
   );
 }
 
