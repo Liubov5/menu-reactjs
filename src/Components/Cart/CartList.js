@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import '../../App.css';
 import { useSelector } from "react-redux";
+import { CartItem } from "./CartItem";
 
 export const CartList = ({title}) => {
     const cart = useSelector(state=>state.CartReducer.cart)
@@ -14,11 +15,12 @@ export const CartList = ({title}) => {
             {cart.items.length === 0 
                 ? <h3>Корзина пустая</h3>
                 : cart.items.map(item=>{
-                    return <div key={item.id}>
-                        {item.name}
-                    </div>
+                    return <CartItem key={item.id} item={item} />
                 })
             }
+            {/* <TotalSumm/>  */}
+            {/* надо ли выносить в отдельный компонент? 
+            Где еще она может использоваться? */}
         </div>
     )
 }

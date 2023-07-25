@@ -60,6 +60,22 @@ body, html{
   background-color: #282c34; 
 }
 
+.cart-item-wrapper{
+  display: flex;
+  background-color: aliceblue;
+  border-bottom: 1px solid lightgray;
+  padding: 10px;
+}
+.cart-item-block-left{
+  width:30%;
+  text-align: center;
+}
+.cart-item-block-right{
+  width:70%;
+}
+.cart-item-img{
+  width:90%;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
