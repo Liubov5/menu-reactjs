@@ -18,7 +18,7 @@ export const CartList = ({title}) => {
                     return <CartItem key={item.id} item={item} />
                 })
             }
-            {/* <TotalSumm/>  */}
+            <h2 style={{textAlign: 'center'}}>Total summ: {cart.totalSumm}$</h2>
             {/* надо ли выносить в отдельный компонент? 
             Где еще она может использоваться? */}
         </div>

@@ -17,8 +17,9 @@ export const CartReducer = (state=defaultState, action) => {
     switch (action.type){
         case ADD_ITEM:
             let item = {...action.payload, count: 1, total:action.payload.price};
-            
-            return {...state, cart: {...state.cart, items:[...state.cart.items, item]}  }
+            let summ = state.cart.totalSumm + item.total;
+
+            return {...state, cart: {...state.cart, items:[...state.cart.items, item], totalSumm: summ}  }
         case ADD_NUMBER:
             return {...state, cart: {...state.cart, items:[
                 ...state.cart.items.map(item=>{
@@ -29,7 +30,7 @@ export const CartReducer = (state=defaultState, action) => {
                       }
                       return item;
                   })
-            ]}};
+            ], totalSumm: state.cart.totalSumm + ???}};
         case REMOVE_NUMBER:
             return {...state, cart: {...state.cart, items:[
                 ...state.cart.items.map(item=>{
