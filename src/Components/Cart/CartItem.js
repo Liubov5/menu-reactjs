@@ -20,9 +20,9 @@ export const CartItem = ({item}) => {
             <div className="cart-item-block-right">
                 <h2>{item.name}</h2>
                 <p>{item.total}$</p>
-                <button onClick={()=>addNumber(item.id)}>+</button>
-                <span>{item.count}</span>
-                <button onClick={()=>removeNumber(item.id)}>-</button>
+                <button className="count_button" onClick={()=>addNumber(item.id)}>+</button>
+                <span style={{fontWeight:"900"}}>{item.count}</span>
+                <button className="count_button" onClick={()=>removeNumber(item.id)}>-</button>
             </div>
         </div>
     )

@@ -30,7 +30,7 @@ export const CartReducer = (state=defaultState, action) => {
                       }
                       return item;
                   })
-            ], totalSumm: state.cart.totalSumm + ???}};
+            ]}}; //разобраться с этим
         case REMOVE_NUMBER:
             return {...state, cart: {...state.cart, items:[
                 ...state.cart.items.map(item=>{
