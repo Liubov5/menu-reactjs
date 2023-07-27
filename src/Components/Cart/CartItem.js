@@ -23,6 +23,9 @@ export const CartItem = ({item}) => {
                 <button className="count_button" onClick={()=>addNumber(item.id)}>+</button>
                 <span style={{fontWeight:"900"}}>{item.count}</span>
                 <button className="count_button" onClick={()=>removeNumber(item.id)}>-</button>
+                {item.price < item.total &&
+                    <p style={{fontWeight:'100', fontSize:'13px'}}>{item.price}$ for per</p>
+                }
             </div>
         </div>
     )
