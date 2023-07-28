@@ -13,14 +13,14 @@ export const CartList = ({title}) => {
         <div className="block-list">
            <h2 className="title">{title}</h2>
             {cart.items.length === 0 
-                ? <h3>Корзина пустая</h3>
-                : cart.items.map(item=>{
-                    return <CartItem key={item.id} item={item} />
-                })
+                ? <h3 style={{textAlign:'center', fontWeight:'100'}}>Корзина пуста</h3>
+                :   <div>
+                        {cart.items.map(item=><CartItem key={item.id} item={item} /> ) }
+                        
+                        <h2 style={{textAlign: 'center'}}>Total summ: {cart.totalSumm}$</h2>
+                    </div>
+                
             }
-            <h2 style={{textAlign: 'center'}}>Total summ: {cart.totalSumm}$</h2>
-            {/* надо ли выносить в отдельный компонент? 
-            Где еще она может использоваться? */}
         </div>
     )
 }

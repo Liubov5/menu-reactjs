@@ -53,7 +53,11 @@ export const CartReducer = (state=defaultState, action) => {
                   })
             ], totalSumm: summ_remove_number }};
         case REMOVE_ITEM:
-            return {}
+
+            return {
+                ...state,
+                cart: {...state.cart, items: state.cart.items.filter(item=>item.id !== action.payload )}
+            }
         default:
             return state;
     }

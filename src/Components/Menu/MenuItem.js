@@ -3,16 +3,15 @@ import "../../App.css";
 import { Button } from "../ui/Button";
 import { addItemAction } from "../../store/CartReducer";
 import { useDispatch } from "react-redux";
+import { inShoppingCartAction } from "../../store/MenuReducer";
 
 
 export const MenuItem = ({item}) => {
     const dispatch = useDispatch();
     const addToCart = (item) => {
         dispatch(addItemAction(item));
-        setButtonDisabled(true);
+        dispatch(inShoppingCartAction(item.id));
     }
-    const [buttonDisabled, setButtonDisabled] = useState(false);
-    //тут нужно добавлять в карт редусер
 
     return(
         <div className="item-wrapper">
@@ -23,7 +22,8 @@ export const MenuItem = ({item}) => {
             <div className="item-block">
                 <p className="item-name">{item.name}</p>
                 <p className="item-price">${item.price}</p>
-                <Button isDisabled={buttonDisabled} addToCart={()=>addToCart(item)}>{buttonDisabled ? "В корзине" :  "Добавить в корзину" }</Button>
+
+                <Button isDisabled={item.inShoppingCart} addToCart={()=>addToCart(item)}>{item.inShoppingCart ? "В корзине" :  "Добавить в корзину" }</Button>
             </div>
             
         </div>

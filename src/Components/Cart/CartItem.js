@@ -2,7 +2,10 @@ import React from "react";
 import "../../App.css";
 import { Button } from "../ui/Button";
 import { useDispatch } from "react-redux";
-import { addNumberAction, removeNumberAction } from "../../store/CartReducer";
+import { addNumberAction, removeNumberAction, removeItemAction } from "../../store/CartReducer";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { inShoppingCartAction } from "../../store/MenuReducer";
 
 export const CartItem = ({item}) => {
     const dispatch = useDispatch();
@@ -12,17 +15,24 @@ export const CartItem = ({item}) => {
     const removeNumber = (id) => {
         dispatch(removeNumberAction(id));
     }
+
+    const removeItem = (id) => {
+        dispatch(removeItemAction(id));
+        dispatch(inShoppingCartAction(id));
+    }
     return (
         <div className="cart-item-wrapper">
             <div className="cart-item-block-left">
                 <img className="cart-item-img" src={require("../../"+item.image)}/>
+                <FontAwesomeIcon onClick={()=>removeItem(item.id)} icon={faTrash} style={{cursor:'pointer'}}/>
             </div>
             <div className="cart-item-block-right">
-                <h2>{item.name}</h2>
+                <h2>{item.name}  </h2> 
                 <p>{item.total}$</p>
                 <button className="count_button" onClick={()=>addNumber(item.id)}>+</button>
-                <span style={{fontWeight:"900"}}>{item.count}</span>
+                <span style={{fontWeight:"900", padding:'7px'}}>{item.count} шт.</span>
                 <button className="count_button" onClick={()=>removeNumber(item.id)}>-</button>
+                
                 {item.price < item.total &&
                     <p style={{fontWeight:'100', fontSize:'13px'}}>{item.price}$ for per</p>
                 }
