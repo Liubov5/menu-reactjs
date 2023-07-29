@@ -16,15 +16,15 @@ export const CartItem = ({item}) => {
         dispatch(removeNumberAction(id));
     }
 
-    const removeItem = (id) => {
-        dispatch(removeItemAction(id));
+    const removeItem = (id, total) => {
+        dispatch(removeItemAction( {id, total} ));
         dispatch(inShoppingCartAction(id));
     }
     return (
         <div className="cart-item-wrapper">
             <div className="cart-item-block-left">
                 <img className="cart-item-img" src={require("../../"+item.image)}/>
-                <FontAwesomeIcon onClick={()=>removeItem(item.id)} icon={faTrash} style={{cursor:'pointer'}}/>
+                <FontAwesomeIcon onClick={()=>removeItem(item.id, item.total)} icon={faTrash} style={{cursor:'pointer'}}/>
             </div>
             <div className="cart-item-block-right">
                 <h2>{item.name}  </h2> 

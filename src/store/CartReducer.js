@@ -20,7 +20,7 @@ export const CartReducer = (state=defaultState, action) => {
         case ADD_ITEM:
             let item = {...action.payload, count: 1, total:action.payload.price};
             let summ = state.cart.totalSumm + item.total;
-            
+            summ =  parseFloat(summ.toFixed(2));
             return {...state, cart: {...state.cart, items:[...state.cart.items, item], totalSumm: summ}  }
         case ADD_NUMBER:
             let summ_add_number = 0;
@@ -53,10 +53,11 @@ export const CartReducer = (state=defaultState, action) => {
                   })
             ], totalSumm: summ_remove_number }};
         case REMOVE_ITEM:
-
+            let summ_remove_item = state.cart.totalSumm - action.payload.total;
+            summ_remove_item =  parseFloat(summ_remove_item.toFixed(2));
             return {
                 ...state,
-                cart: {...state.cart, items: state.cart.items.filter(item=>item.id !== action.payload )}
+                cart: {...state.cart, items: state.cart.items.filter(item=>item.id !== action.payload.id ), totalSumm: summ_remove_item }
             }
         default:
             return state;
