@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../../App.css";
-import { Button } from "../ui/Button";
 import { useDispatch } from "react-redux";
 import { addNumberAction, removeNumberAction, removeItemAction } from "../../store/CartReducer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { inShoppingCartAction } from "../../store/MenuReducer";
+import { CSSTransition } from "react-transition-group";
 
 export const CartItem = ({item}) => {
     const dispatch = useDispatch();
+    const nodeRef = useRef(null);
     const addNumber = (id) => {
         dispatch(addNumberAction(id));
     }
@@ -21,7 +22,8 @@ export const CartItem = ({item}) => {
         dispatch(inShoppingCartAction(id));
     }
     return (
-        <div className="cart-item-wrapper">
+        <CSSTransition in={true} timeout={500} classNames="showCartItem"  nodeRef={nodeRef}>
+        <div ref={nodeRef} className="cart-item-wrapper">
             <div className="cart-item-block-left">
                 <img className="cart-item-img" src={require("../../"+item.image)}/>
                 <FontAwesomeIcon onClick={()=>removeItem(item.id, item.total)} icon={faTrash} style={{cursor:'pointer'}}/>
@@ -38,5 +40,6 @@ export const CartItem = ({item}) => {
                 }
             </div>
         </div>
+        </CSSTransition>
     )
 }

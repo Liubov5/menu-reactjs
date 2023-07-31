@@ -84,6 +84,14 @@ body, html{
   color: white;
   font-weight: 600;
 }
+.showCartItem-enter {
+  left:-100%;
+  position: absolute;
+}
+.showCartItem-enter-active {
+  left:0;
+  position:absolute;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
