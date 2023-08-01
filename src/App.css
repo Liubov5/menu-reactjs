@@ -84,13 +84,19 @@ body, html{
   color: white;
   font-weight: 600;
 }
-.showCartItem-enter {
-  left:-100%;
-  position: absolute;
+.item-enter {
+  opacity: 0;
 }
-.showCartItem-enter-active {
-  left:0;
-  position:absolute;
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+ .item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

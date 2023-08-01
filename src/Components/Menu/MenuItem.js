@@ -12,11 +12,13 @@ export const MenuItem = ({item}) => {
         dispatch(addItemAction(item));
         dispatch(inShoppingCartAction(item.id));
     }
-
+    const openModal = (id) =>{
+        
+    }
     return(
         <div className="item-wrapper">
             <div className="item-block">
-                <img className="item-img" src={require("../../"+item.image)}/> 
+                <img onClick={()=>openModal(item.id)} className="item-img" src={require("../../"+item.image)}/> 
                 {/* что делает require */}
             </div>
             <div className="item-block">
@@ -25,7 +27,6 @@ export const MenuItem = ({item}) => {
 
                 <Button isDisabled={item.inShoppingCart} addToCart={()=>addToCart(item)}>{item.inShoppingCart ? "В корзине" :  "Добавить в корзину" }</Button>
             </div>
-            
         </div>
     )
 }
