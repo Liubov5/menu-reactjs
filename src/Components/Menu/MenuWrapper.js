@@ -4,21 +4,25 @@ import '../../App.css';
 import { MenuList } from "./MenuList";
 import { CartList } from "../Cart/CartList";
 import { ItemModal } from "../Modal/ItemModal";
-import Context from "../../Context";
+import ModalContext from "../../Context";
 
 
 export const MenuWrapper = () => {
     const menuItems = useSelector(state=>state.MenuReducer.menuList);
-    const [modal, setModal] = useState(false)
+    const [modal, setModal] = useState({
+      status:false,
+      id:0,
+    });
     
     return(
-        <Context.Provider value={[modal,setModal]}>
+        <ModalContext.Provider value={[modal, setModal]}>
           <div className="menu_wrapper">
             <MenuList title="Меню" items={menuItems}/>
             <CartList title="Корзина"/>
-            <ItemModal visible={true} setVisible={setModal} id={1}>LOL</ItemModal>
+            <ItemModal visible={modal.status} setVisible={setModal} id={modal.id}>
+            </ItemModal>
           </div>
-        </Context.Provider>
+        </ModalContext.Provider>
       
     )
 }
