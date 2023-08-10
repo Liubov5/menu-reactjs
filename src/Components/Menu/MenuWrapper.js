@@ -17,8 +17,8 @@ export const MenuWrapper = () => {
     return(
         <ModalContext.Provider value={[modal, setModal]}>
           <div className="menu_wrapper">
-            <MenuList title="Меню" items={menuItems}/>
-            <CartList title="Корзина"/>
+            <MenuList title="Menu" items={menuItems}/>
+            <CartList title="Cart"/>
             <ItemModal visible={modal.status} setVisible={setModal} id={modal.id}>
             </ItemModal>
           </div>

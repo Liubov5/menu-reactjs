@@ -29,7 +29,7 @@ export const CartItem = ({item, innerRef}) => {
                 <h2>{item.name}  </h2> 
                 <p>{item.total}$</p>
                 <button className="count_button" onClick={()=>addNumber(item.id)}>+</button>
-                <span style={{fontWeight:"900", padding:'7px'}}>{item.count} шт.</span>
+                <span style={{fontWeight:"900", padding:'7px'}}>{item.count}</span>
                 <button className="count_button" onClick={()=>removeNumber(item.id)}>-</button>
                 
                 {item.price < item.total &&

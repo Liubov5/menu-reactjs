@@ -27,7 +27,7 @@ export const MenuItem = ({item}) => {
                 <p className="item-name">{item.name}</p>
                 <p className="item-price">${item.price}</p>
 
-                <Button isDisabled={item.inShoppingCart} addToCart={()=>addToCart(item)}>{item.inShoppingCart ? "В корзине" :  "Добавить в корзину" }</Button>
+                <Button isDisabled={item.inShoppingCart} addToCart={()=>addToCart(item)}>{item.inShoppingCart ? "In cart" :  "Add to cart" }</Button>
             </div>
         </div>
     )
