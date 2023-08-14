@@ -15,7 +15,7 @@ export const CartList = ({title}) => {
         <div className="block-list">
            <h2 className="title">{title}</h2>
             {cart.items.length === 0 
-                ? <h3 style={{textAlign:'center', fontWeight:'100'}}>Корзина пуста</h3>
+                ? <h3 style={{textAlign:'center', fontWeight:'100'}}>The cart is empty</h3>
                 :   <div>
                         <TransitionGroup>
                             {cart.items.map((item,index)=>
